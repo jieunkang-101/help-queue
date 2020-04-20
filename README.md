@@ -2,18 +2,22 @@
 
 #### React fundamentals exercise at [Epicodus](https://www.epicodus.com/), 04.20.2020 
 
-#### By **Jieun Kang 
+#### By **Jieun Kang**
 
 ## Description 
 
 ## Setup/Installation Requirements
 
-* $ git clone [https://github.com/jieunkang-202/help-queue.git]
+* $ git clone https://github.com/jieunkang-101/help-queue.git
 * $ npm install
-* npm run start
+* $ npm run start
 
 ## Specs
-![Component Diagram](src/assets/images/component-diagram.jpg)
+<img src="src/assets/img/component-diagram.jpg"
+     alt="Application Component Tree"
+     style="float: center" 
+     height= "400" />  
+<!-- ![alt Component Diagram](src/assets/img/component-diagram.jpg) -->
 
 ## Known Bugs
 
