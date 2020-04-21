@@ -5,6 +5,7 @@
 #### By **Jieun Kang**
 
 ## Description 
+Application based around practicing component trees.
 
 ## Setup/Installation Requirements
 
