@@ -1,6 +1,7 @@
 import React from 'react';
-import NewTicketForm from './NewTicketForm';
+//import NewTicketForm from './NewTicketForm';
 import TicketList from './TicketList';
+import QuestionDisplay from './QuestionDisplay';
 
 class TicketControl extends React.Component {
 
@@ -21,7 +22,7 @@ class TicketControl extends React.Component {
     let currentlyVisibleState = null;
     let buttonText = null;
     if (this.state.formVisibleOnPage) {
-      currentlyVisibleState = <NewTicketForm />
+      currentlyVisibleState = <QuestionDisplay />
       buttonText = "Return to Ticket List"; 
     } else {
       currentlyVisibleState = <TicketList />
