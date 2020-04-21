@@ -1,5 +1,6 @@
 import React from "react";
 import Question from "./Question";
+import NewTicketForm from './NewTicketForm';
 
 class QuestionDisplay extends React.Component {
 
@@ -36,8 +37,29 @@ class QuestionDisplay extends React.Component {
     }
   }
 
+  handleClick = () => {
+    this.setState(prevState => ({
+      formVisibleOnPage: !prevState.formVisibleOnPage
+    }));    
+  }
+
+  displayPages = () => {
+    if(this.state.formVisibleOnPage) {
+      return (
+        <NewTicketForm />
+      );
+    } else {
+      let currentQuestion = this.displayQuestion();
+      return (
+        <Question 
+          questionText={currentQuestion.questionText}
+          function={currentQuestion.function} />
+      );
+    }
+  }
+
   render() {
-    let currentlyVisibleState = null;
+    let currentlyVisibleState = this.displayPages();
     return (
       <React.Fragment>
         {currentlyVisibleState}
