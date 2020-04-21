@@ -23,7 +23,7 @@ class TicketControl extends React.Component {
     let buttonText = null;
     if (this.state.formVisibleOnPage) {
       currentlyVisibleState = <QuestionDisplay />
-      buttonText = "Return to Ticket List"; 
+      buttonText = "Return To Ticket List"; 
     } else {
       currentlyVisibleState = <TicketList />
       buttonText = "Add Ticket";

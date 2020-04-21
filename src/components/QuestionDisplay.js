@@ -19,12 +19,12 @@ class QuestionDisplay extends React.Component {
   }
 
   displayQuestion = () => {
-    if (this.state.questionVisible % 3 === 1) {
+    if (this.state.questionVisible  === 1) {
       return {
         questionText: "Have you gone through all the steps on the Learn How to Program debugging lesson?",
         function: this.handleQuestion
       }
-    } else if (this.state.questionVisible % 3 === 2) {
+    } else if (this.state.questionVisible === 2) {
       return {
         questionText: "Have you asked another pair for help?",
         function: this.handleQuestion
@@ -32,12 +32,12 @@ class QuestionDisplay extends React.Component {
     } else {
       return {
         questionText: "Have you spent 15 minutes going through through the problem documenting every step?",
-        function: this.handleQuestion
+        function: this.handleForm
       }
     }
   }
 
-  handleClick = () => {
+  handleForm = () => {
     this.setState(prevState => ({
       formVisibleOnPage: !prevState.formVisibleOnPage
     }));    
@@ -51,6 +51,7 @@ class QuestionDisplay extends React.Component {
     } else {
       let currentQuestion = this.displayQuestion();
       return (
+        
         <Question 
           questionText={currentQuestion.questionText}
           function={currentQuestion.function} />
@@ -63,7 +64,6 @@ class QuestionDisplay extends React.Component {
     return (
       <React.Fragment>
         {currentlyVisibleState}
-        <Question />
       </React.Fragment>
     );
   }
