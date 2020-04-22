@@ -1,6 +1,7 @@
 import React from "react";
 import Question from "./Question";
 import NewTicketForm from './NewTicketForm';
+import TicketList from './TicketList';
 
 class QuestionDisplay extends React.Component {
 
@@ -22,17 +23,17 @@ class QuestionDisplay extends React.Component {
     if (this.state.questionVisible  === 1) {
       return {
         questionText: "Have you gone through all the steps on the Learn How to Program debugging lesson?",
-        function: this.handleQuestion
+        nextStep: this.handleQuestion
       }
     } else if (this.state.questionVisible === 2) {
       return {
         questionText: "Have you asked another pair for help?",
-        function: this.handleQuestion
+        nextStep: this.handleQuestion
       }
     } else {
       return {
         questionText: "Have you spent 15 minutes going through through the problem documenting every step?",
-        function: this.handleForm
+        nextStep: this.handleForm
       }
     }
   }
@@ -43,18 +44,23 @@ class QuestionDisplay extends React.Component {
     }));    
   }
 
+  handleAddingNewTicketToList = (newTicket) => {
+    const newMasterTicketList = this.state.masterTicketList.concat(newTicket);
+    this.setState({masterTicketList: newMasterTicketList});
+    this.setState({formVisibleOnPage: false});
+  }
+
   displayPages = () => {
     if(this.state.formVisibleOnPage) {
       return (
-        <NewTicketForm />
+        <NewTicketForm onNewTicketCreation={this.handleAddingNewTicketToList} />
       );
     } else {
       let currentQuestion = this.displayQuestion();
       return (
-        
         <Question 
           questionText={currentQuestion.questionText}
-          function={currentQuestion.function} />
+          nextStep={currentQuestion.nextStep} />
       );
     }
   }
