@@ -17,7 +17,7 @@ function NewTicketForm(props){
           name='names'
           placeholder='Pair Names' />
         <input
-          type='text'
+          type='number'
           name='location'
           placeholder='Location' />
         <textarea

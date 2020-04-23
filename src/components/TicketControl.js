@@ -30,14 +30,23 @@ class TicketControl extends React.Component {
 
   handleAddingNewTicketToList = (newTicket) => {
     const newMasterTicketList = this.state.masterTicketList.concat(newTicket);
-    console.log("newMasterTicketList", newMasterTicketList[0].id);
     this.setState({masterTicketList: newMasterTicketList});
     this.setState({formVisibleOnPage: false});
   }
 
   handleChangingSelectedTicket = (id) => {
     const selectedTicket = this.state.masterTicketList.filter(ticket => ticket.id === id)[0];
+    console.log("location", selectedTicket.location);
+    selectedTicket.location ++;
     this.setState({selectedTicket: selectedTicket});
+    const newMasterTicketList = this.state.masterTicketList.filter(ticket => ticket.id !== id).concat(selectedTicket);
+    this.setState({masterTicketList: newMasterTicketList});
+  }
+
+  handleDeletingTicket = (id) => {
+    const newMasterTicketList = this.state.masterTicketList.filter(ticket => ticket.id !== id);
+    this.setState({masterTicketList: newMasterTicketList});
+    this.setState({selectedTicket: null});
   }
 
   render(){
@@ -46,7 +55,7 @@ class TicketControl extends React.Component {
     console.log("state", this.state);
 
     if (this.state.selectedTicket != null) {
-      currentlyVisibleState = <TicketDetail ticket = {this.state.selectedTicket} />
+      currentlyVisibleState = <TicketDetail ticket = {this.state.selectedTicket} onClickingDelete = {this.handleDeletingTicket} />
       buttonText = "Return to Ticket List";
     } else if (this.state.formVisibleOnPage) {
       currentlyVisibleState = <NewTicketForm onNewTicketCreation={this.handleAddingNewTicketToList}  />;

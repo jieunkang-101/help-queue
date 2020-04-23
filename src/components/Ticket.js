@@ -17,7 +17,7 @@ function Ticket(props){
 
 Ticket.propTypes = {
   names: PropTypes.string.isRequired,
-  location: PropTypes.string.isRequired,
+  location: PropTypes.number.isRequired,
   issue: PropTypes.string,
   id: PropTypes.string,
   whenTicketClicked: PropTypes.func 
